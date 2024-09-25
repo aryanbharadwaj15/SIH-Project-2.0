@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #cbe5ed;
+}
+
+::selection {
+    color: #fff;
+    background: #d43f8d;
+}
+
+.container {
+    width: 330px;
+    background: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 50px 45px 10px 35px;
+
+    header {
+        font-size: 35px;
+        font-weight: 600;
+        margin: 0 0 30px 0;
+    }
+
+    .form-outer {
+        width: 100%;
+        overflow: hidden;
+
+        form {
+            display: flex;
+            width: 400%;
+
+            .page {
+                width: 25%;
+                transition: margin-left 0.3s ease-in-out;
+
+                .title {
+                    text-align: left;
+                    font-size: 25px;
+                    font-weight: 500;
+                }
+
+                .field {
+                    width: 330px;
+                    height: 45px;
+                    margin: 45px 0;
+                    display: flex;
+                    position: relative;
+
+                    .label {
+                        position: absolute;
+                        top: -30px;
+                        font-weight: 500;
+                    }
+
+                    input {
+                        height: 100%;
+                        width: 100%;
+                        border: 1px solid lightgrey;
+                        border-radius: 5px;
+                        padding-left: 15px;
+                        font-size: 18px;
+                    }
+
+                    select {
+                        width: 45%;
+                        padding-left: 10px;
+                        font-size: 16px;
+                        font-weight: 498;
+                        height: 94%;
+                    }
+
+                    button {
+                        width: 100%;
+                        height: calc(100% + 5px);
+                        border: none;
+                        background: #d33f8d;
+                        margin-top: -20px;
+                        border-radius: 5px;
+                        color: #fff;
+                        cursor: pointer;
+                        font-size: 18px;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        transition: 0.5s ease;
+
+                        &:hover {
+                            background: #000;
+                        }
+                    }
+
+                    .btns {
+                        button {
+                            margin-top: -20px !important;
+
+                            &.prev {
+                                margin-right: 3px;
+                                font-size: 17px;
+                            }
+
+                            &.next {
+                                margin-left: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .close-btn {
+        position: relative;
+        top: -40px;
+        left: 180px;
+        border: none;
+        background: none;
+        font-size: 38px;
+        cursor: pointer;
+    }
+
+    .progress-bar {
+        display: flex;
+        margin: 40px 0;
+        user-select: none;
+
+        .step {
+            text-align: center;
+            width: 100%;
+            position: relative;
+
+            p {
+                font-weight: 500;
+                font-size: 18px;
+                color: #000;
+                margin-bottom: 8px;
+            }
+
+            .bullet {
+                height: 25px;
+                width: 25px;
+                border: 2px solid #000;
+                display: inline-block;
+                border-radius: 50%;
+                position: relative;
+                transition: 0.2s;
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 25px;
+
+                &.active {
+                    border-color: #d43f8d;
+                    background: #d43f8d;
+                }
+
+                span {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                &:before,
+                &:after {
+                    position: absolute;
+                    content: '';
+                    bottom: 11px;
+                    right: -51px;
+                    height: 3px;
+                    width: 44px;
+                    background: #262626;
+
+                    &.active:after {
+                        background: #d43f8d;
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        animation: animate 0.3s linear forwards;
+                    }
+                }
+            }
+
+            &:last-child {
+                .bullet:before,
+                .bullet:after {
+                    display: none;
+                }
+            }
+
+            p.active {
+                color: #d43f8d;
+                transition: 0.2s linear;
+            }
+
+            .check {
+                position: absolute;
+                left: 50%;
+                top: 70%;
+                font-size: 15px;
+                transform: translate(-50%, -50%);
+                display: none;
+
+                &.active {
+                    display: block;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    /* Calendar Icon */
+    .page .field i.fa-calendar {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* Password Toggle */
+    .page .field i#togglePassword {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* Password Strength */
+    #passwordStrength {
+        font-size: 14px;
+        color: red;
+        top: -30px;
+        position: relative;
+    }
+
+    .phone-input {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        select {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        input[type="tel"] {
+            width: 100%;
+        }
+    }
+
+    /* General styling for the error message */
+    .error-message {
+        color: rgb(255, 0, 0);
+        font-size: 16px;
+        position: relative;
+        text-align: left;
+        display: none;
+        width: 100%;
+        top: -44px;
+
+        &.visible {
+            display: flex; /* Make it visible when there's an error */
+        }
+    }
+
+    /* To make sure the email and phone fields take the full width */
+    .field input[type="email"],
+    .field input[type="tel"],
+    .phone-input select {
+        width: 100%;
+        box-sizing: border-box; /* Ensure the width includes padding and border */
+    }
+
+    .field {
+        margin-bottom: 30px; /* Create enough space below each field for error messages */
+    }
+}
