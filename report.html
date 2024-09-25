@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report</title>
+    <link rel="stylesheet" href="report.css">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Generate Report</h1>
+        <div class="nav-buttons">
+            <button class="btn dashboard-btn" onclick="location.href='dashboard.html'">Dashboard</button>
+            <button class="btn logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Report Form Section -->
+    <div class="report-form">
+        
+        <form id="reportForm">
+            <div class="form-group">
+                <label for="reportTitle">Report Title:</label>
+                <input type="text" id="reportTitle" placeholder="Enter report title" required>
+            </div>
+            <div class="form-group">
+                <label for="reportDate">Date of Report:</label>
+                <input type="date" id="reportDate" required>
+            </div>
+            <div class="form-group">
+                <label for="preparedBy">Prepared By:</label>
+                <input type="text" id="preparedBy" value="John Doe" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reportType">Report Type:</label>
+                <select id="reportType" required>
+                    <option value="">Select Report Type</option>
+                    <option value="inventory">Inventory Summary</option>
+                    <option value="expired">Expired Items</option>
+                    <option value="lowStock">Low Stock Items</option>
+                    <option value="full">Full Report</option>
+                </select>
+            </div>
+            <!-- Additional Inputs -->
+            <div class="form-group">
+                <label for="reportDescription">Description:</label>
+                <textarea id="reportDescription" placeholder="Enter a brief description of the report" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="additionalNotes">Additional Notes:</label>
+                <input type="text" id="additionalNotes" placeholder="Any notes or comments">
+            </div>
+            <button type="submit" class="btn">Generate Report</button>
+        </form>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading">
+        <p>Generating Report...</p>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Report Output Section -->
+    <div class="report-output" style="display: none;">
+        <h2 id="reportTitleOutput">Report Title</h2>
+        <p><strong>Date:</strong> <span id="reportDateOutput"></span></p>
+        <p><strong>Prepared By:</strong> <span id="preparedByOutput"></span></p>
+        <p><strong>Description:</strong> <span id="reportDescriptionOutput"></span></p>
+        <p><strong>Additional Notes:</strong> <span id="additionalNotesOutput"></span></p>
+
+        <!-- Report Metrics -->
+        <div class="report-metrics">
+            <p><strong>Total Items:</strong> <span id="totalItemsOutput"></span></p>
+            <p><strong>Expiring Soon:</strong> <span id="expiringSoonOutput"></span></p>
+            <p><strong>Low Stock Items:</strong> <span id="lowStockOutput"></span></p>
+        </div>
+
+        <!-- Report Charts -->
+        <canvas id="reportChart"></canvas>
+
+        <!-- Report Actions -->
+        <div class="report-actions">
+            <button class="btn" id="downloadReport">Download as PDF</button>
+            <button class="btn" id="printReport">Print Report</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © 2024 - All Rights Reserved</p>
+    </footer>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="report.js"></script>
+</body>
+</html>

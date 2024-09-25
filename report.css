@@ -1,0 +1,143 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+header.header {
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .btn.logout {
+    background-color: white;
+    border: none;
+    color: #007bff;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+/* Dashboard and LogOut Button styles */
+.nav-buttons {
+    display: flex;
+    gap: 15px; /* Add space between buttons */
+}
+
+.btn {
+    background-color: #59e3b7; /* Main button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for buttons */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Report Form Styling */
+.report-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.report-form .form-group {
+    margin-bottom: 15px;
+}
+
+.report-form .form-group label {
+    font-weight: bold;
+    display: block;
+}
+
+.report-form .form-group input, 
+.report-form .form-group select, 
+.report-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.report-form .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.report-form .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Loading Spinner */
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-radius: 50%;
+    border-top: 4px solid #007bff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Report Output Styling */
+.report-output {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 800px;
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.report-metrics {
+    margin-bottom: 20px;
+}
+
+.report-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
