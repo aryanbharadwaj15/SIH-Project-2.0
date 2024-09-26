@@ -242,8 +242,8 @@ togglePassword.addEventListener("click", function () {
 // Password Strength Checker
 passwordInput.addEventListener("input", function () {
     const value = passwordInput.value;
-    const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // At least one uppercase, one lowercase, one number, one special character, and 8+ characters
-    const mediumPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/; // At least one uppercase, one lowercase, one number, and 8+ characters
+    const strongPattern = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/; // At least one uppercase, one lowercase, one number, one special character, and 8+ characters
+    const mediumPattern = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/; // At least one uppercase, one lowercase, one number, and 8+ characters
 
     if (strongPattern.test(value)) {
         passwordStrength.textContent = "Strong";
@@ -255,4 +255,30 @@ passwordInput.addEventListener("input", function () {
         passwordStrength.textContent = "Weak";
         passwordStrength.style.color = "red";
     }
+});
+// Datepicker for Date of Birth
+$(function () {
+    $("#dob").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1900:2024"
+    });
+});
+// Listen for Enter key press on the entire document
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        // Trigger the corresponding Next button based on current step
+        if (current === 1) {
+            nextBtnFirst.click();
+        } else if (current === 2) {
+            nextBtnSec.click();
+        } else if (current === 3) {
+            nextBtnThird.click();
+        } else if (current === 4) {
+            submitBtn.click();
+        }
+    }
 });
